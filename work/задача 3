@@ -1,0 +1,6 @@
+x= input(float())
+y= input(float())
+
+
+max1 = (x > y) *x + (y > x) *y
+print('Max:', max1)
