@@ -1,0 +1,9 @@
+a= int(input()) # сторона трекyольника
+b=int(input()) # сторона треyгольника
+c=int(input()) # сторона треyгольника
+def triangle_area(a, b, c): # Проверка существования треугольника
+      if a + b <= c or a + c <= b or b + c <= a:
+        raise ValueError("Невозможно построить треугольник с такими сторонами!")
+s = (a+b+c)/2
+area= sqrt(s*(s-a)*(s-b)*(s-c))
+print(area)

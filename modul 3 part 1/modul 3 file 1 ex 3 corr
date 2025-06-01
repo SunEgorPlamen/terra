@@ -1,0 +1,3 @@
+number = input("Введите число: ")
+sum_digits = sum(int(digit) for digit in number)
+print("Сумма цифр:", sum_digits)
