@@ -1,0 +1,5 @@
+def short_words(words):
+    return [word for word in words if len(word) <= 5]
+words = ["Волчий вой да лай собак Крепко до боли сжатый кулак Птицей стучится в жилах кровь Вера да надежда, любовь Заголосуют тысячи рук И высок наш флаг"] 
+filtered_words = short_words(words)
+print(filtered_words)

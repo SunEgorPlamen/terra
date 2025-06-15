@@ -1,0 +1,6 @@
+my_dict = {"cat":1,'dog':2, "parrot":3}
+# inverted_dict = {1: 'cat', 2: 'dog', 3: 'parrot'} надо получить
+inverted_dict = {}
+for key, value in my_dict.items():
+    inverted_dict[value] = key  
+print(inverted_dict)

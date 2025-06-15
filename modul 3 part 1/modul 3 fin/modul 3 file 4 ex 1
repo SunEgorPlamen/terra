@@ -1,0 +1,17 @@
+import json
+
+def save_username(login, password):
+    username = {
+        "login": login,
+        "password": password
+    }
+
+    with open("users.json", "w") as file:
+        json.dump(user_name, file, indent=4)
+
+username = input("Введите ваш логин: ")# Запрашиваем у пользователя логин и пароль
+password = input("Введите ваш пароль: ")
+
+save_user_data(username, password)# Вызываем функцию сохранения данных
+
+print("Данные успешно сохранены в users.json")
