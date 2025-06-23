@@ -1,0 +1,26 @@
+# Функция поиска в ширину (BFS)
+
+def bfs(graph, start, goal):
+    # Очередь для хранения пар вида ("текущая_вершина", путь)
+    queue = deque([(start, [start])])
+    
+    # Множество посещённых вершин
+    visited = set()
+    
+    while queue:
+        vertex, path = queue.popleft()
+        
+        # Проверяем, достигли ли мы цели
+        if vertex == goal:
+            return path
+            
+        # Отмечаем вершину как посещённую
+        visited.add(vertex)
+        
+        # Добавляем соседей вершины в очередь
+        for neighbor in graph.get(vertex, []):
+            if neighbor not in visited:
+                queue.append((neighbor, path + [neighbor]))
+                
+    return None  # Если путь не найден
+
