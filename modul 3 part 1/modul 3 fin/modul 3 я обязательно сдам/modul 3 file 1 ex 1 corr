@@ -1,0 +1,8 @@
+x= int(input()) # сумма вклада
+y= int(input()) # итоговая сумма
+p= int(input()) # процент 
+years = 0
+while x < y:
+	x += 1 + p/100*x
+	years += 1
+	print(years)
