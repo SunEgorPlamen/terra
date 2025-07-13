@@ -1,0 +1,22 @@
+import json
+
+class Model:
+    def __init__(self, title=None, author=None, primarch=None):
+        self.title = title # Устанавливаем исходные значения атрибутов
+        self.author = author
+        self.primarch = primarch
+    def save(self, filename='model_data.json'):
+        # Получаем все атрибуты экземпляра класса
+        data = {
+            attr_name: getattr(self, attr_name)
+            for attr_name in dir(self)
+            if not callable(getattr(self, attr_name)) and not attr_name.startswith("__")
+        }
+        with open(filename, 'w') as file: # Запись данных в JSON-файл
+            json.dump(data, file, indent=4)
+
+if __name__ == "__main__": # Примеры использования
+    model_instance = Model(title="Легион", author="Некий Автор", primarch="Фулгрим")
+    model_instance.save('legion_model.json')
+
+    print("Данные успешно сохранены.")

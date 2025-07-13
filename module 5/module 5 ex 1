@@ -1,0 +1,20 @@
+class StringVar:
+    def __init__(self):
+        self.value = ""
+    
+    def set(self, new_value):# метод для установки значения строки
+        if isinstance(new_value, str):
+            self.value = new_value
+        else:
+            raise TypeError("Значение должно быть строкового типа")
+    
+    def get(self):# метод для получения текущего значения строки
+        return self.value
+
+my_string_var = StringVar()# создаём объект класса StringVar
+
+print(my_string_var.get())  # выводится пустая строка ''# проверяем работу метода get(), значение пока пустое
+
+my_string_var.set("Привет мир!")# устанавливаем новое значение методом set()
+
+print(my_string_var.get())  # выводит 'Привет мир!'# проверяем новый результат методом get()
