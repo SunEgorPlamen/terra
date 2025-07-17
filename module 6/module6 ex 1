@@ -1,0 +1,17 @@
+mport threading
+import time
+
+def get_thread(thread_name): # Функция, принимающая название потока и выполняющая ожидание + вывод имени
+    # Ожидаем 1 секунду перед выводом названия потока
+    time.sleep(1)
+    print(f"Поток {thread_name}")
+
+threads = [] # Создаем список для хранения объектов потоков
+
+for i in range(5): # Запускаем 5 потоков с разными именами
+    thread = threading.Thread(target=get_thread, args=(f"Поток_{i+1}",))
+    threads.append(thread)
+    thread.start()
+
+for thread in threads: # Ждем завершения всех запущенных потоков
+    thread.join()

@@ -1,0 +1,48 @@
+import requests
+
+def get_html(link):
+    response = requests.get(link)
+    if response.status_code == 200:
+        return response.text
+    else:
+        return f"Ошибка загрузки страницы ({response.status_code})"
+---
+
+import time
+
+links = [
+    'https://example.com',
+    'https://www.python.org',
+    'https://ru.wikipedia.org/wiki/Main_Page',
+    'https://docs.python.org/3/',
+    'https://pypi.org/'
+]
+
+start_time_seq = time.time() # Измерение времени последовательного выполнения
+
+for link in links:
+    html_content = get_html(link)
+    print(html_content[:100])  # Выведем первые 100 символов текста каждой страницы
+
+end_time_seq = time.time()
+sequential_time = end_time_seq - start_time_seq
+print(f"\nВремя последовательного выполнения: {sequential_time:.2f} секунд\n")
+---
+
+import threading
+
+start_time_par = time.time()# Измерение времени параллельного выполнения
+
+threads = []
+
+for link in links:
+    thread = threading.Thread(target=lambda l: print(get_html(l)[:100]), args=(link,))
+    threads.append(thread)
+    thread.start()
+
+for thread in threads:
+    thread.join()
+
+end_time_par = time.time()
+parallel_time = end_time_par - start_time_par
+print(f"\nВремя параллельного выполнения: {parallel_time:.2f} секунд\n")
